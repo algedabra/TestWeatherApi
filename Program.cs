@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.IO;
+using System.Linq;
 
 namespace HelloWorld
 {
@@ -13,7 +15,7 @@ namespace HelloWorld
 
         public static async Task Forecast()
         {
-            var apiKey = "2362fdd674b94c0c3541af74ebfe2eff";
+            var apiKey = File.ReadLines(@"d:\temp\darksky\apikey.txt").First();
             var darkSky = new DarkSky.Services.DarkSkyService(apiKey);
             var forecast = await darkSky.GetForecast(52.99042, 8.81614);
 
